@@ -13,6 +13,8 @@
         <meta name="description" content="Tugas Penambangan Data">
       
       
+        <link rel="canonical" href="https://imamwahyudi.github.io/adt/">
+      
       
         <meta name="author" content="Aditya Pratama Andy Mahfudz">
       
@@ -35,18 +37,18 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="/assets/images/favicon.png">
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
     
     
       
-        <title>(180411100010) adit nub</title>
+        <title>statistik deskriptif - (180411100010) adit nub</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.30686662.css">
       
-        <link rel="stylesheet" href="/assets/stylesheets/application-palette.a8b3c06d.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
       
       
         
@@ -55,7 +57,7 @@
       
     
     
-      <script src="/assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
     
     
       
@@ -64,9 +66,9 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="/assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
-      <link rel="manifest" href="/manifest.webmanifest">
+      <link rel="manifest" href="../manifest.webmanifest">
     
     
     
@@ -138,7 +140,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                
+                statistik deskriptif
               
             </span>
           
@@ -249,7 +251,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/." title="index" class="md-nav__link">
+    <a href=".." title="index" class="md-nav__link">
       index
     </a>
   </li>
@@ -259,11 +261,18 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="/adt/" title="statistik deskriptif" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="statistik deskriptif" class="md-nav__link md-nav__link--active">
       statistik deskriptif
     </a>
+    
   </li>
 
     
@@ -278,8 +287,139 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                  <a href="https://github.com/adityapratamaandym/edit/master/docs/adt.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>statistik deskriptif</h1>
+                
+                <p>1.Rata rata adalah suatu bilangan yang mewakili sekumpulan data Rumus : 
+$$
+\begin{align}
+\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i={a_1+a_2+a_3+a_4+........+a_n \over n}
+\end{align}
+$$
+2.Median adalah nilai tengah atau pemusatan data Rumus : 
+$$
+Me=Q_2 =\left( \begin{matrix}
+  {xn \over 2 } {xn+1\over 2} \over 2
+\end{matrix} \right), jika\quad n\quad genap
+$$</p>
+<p>$$
+Me=Q_2 =\left( \begin{matrix}
+  n+1 \over 2
+\end{matrix} \right), jika\quad n\quad ganjil
+$$
+ 3.Modus adalah data yang sering muncul Rumus : nilai yang paling banyak muncul 
+$$
+M_o = Tb + p{b_1 \over b_1 + b_2}
+$$
+4.Standart Deviasi adalah nilai statistik yang digunakan untuk menentukan sebaran data dalam sampel Rumus : 
+$$
+t {{\sum \limits_{i=1}^{n} (x_i - \bar x)^2 \over n}}
+$$
+ 5.Varian adalah ukuran seberapa jauh kumpulan bilangan tersebar Rumus : 
+$$
+\sigma^2 = {\sum \limits_{i=1}^{n} (x_i - \bar x)^2 \over n}
+$$
+ 6.Skewness adalah derajatketidaksimetrisan suatu distribusi rumus:
+$$
+{\sum \limits{i=1}^n (x_i - \bar x)^i \over (n- 1) \sigma^3}
+$$
+ 7.Quartil adalah nilai-nilai yang membagi data yang telah diurutkan ke dalam empat bagian yang nilainya sama besar. Dalam menentukan letak kuartil data tunggal Rumus :
+$$
+Q_1 = (n + 1) {1\over 4}
+$$</p>
+<p>$$
+Q_2 = (n + 1) {1\over 2}
+$$</p>
+<p>$$
+Q_3 = (n + 1) {3\over 4}
+$$</p>
+<p>Penerapan Statistik Deskriptif Menggunakan Python</p>
+<div class="codehilite"><pre><span></span>import pandas as pd
+from scipy import stats
+import numpy as np
+import seaborn as sns
+import matplotlib as plt
+data = pd.read_csv(&quot;adit.csv&quot;,delimiter=&quot;;&quot;)
+cm = sns.light_palette(&quot;gold&quot;, as_cmap=True)
+data.style.background_gradient(cmap=cm)
 
+colum = data.columns.tolist()
+for x in colum :
+    ds = [x for x in data[x]]
+    desc = data[x].describe()
+    array = [x for x in desc]
+    print(&quot;Detail kolom&quot;,x)
+    print(&quot;Mean: &quot;,array[1])
+    print(&quot;Median: &quot;,np.median(np.array(ds)))
+    print(&quot;Modus: &quot;,stats.mode(ds))
+    print(&quot;Standart Deviasi: &quot;,np.std(ds))
+    print(&quot;Varian: &quot;,stats.variation(ds))
+    print(&quot;Skewness: &quot;,stats.skew(ds))
+    print(&quot;Q1: &quot;,array[4])
+    print(&quot;Q2: &quot;,array[5])
+    print(&quot;Q3: &quot;,array[6])
+    sns.distplot(data[x])
+
+    print(&quot;\n&quot;)
+</pre></div>
+
+
+<p>Detail kolom A
+Mean:  69.802
+Median:  70.0
+Modus:  ModeResult(mode=array([60]), count=array([33]))
+Standart deviasi:  6.267598902291052
+Varian:  0.08979110773747244
+Skewness:  0.0652443885962811
+Q1:  64.75
+Q2:  70.0
+Q3:  75.0</p>
+<p>Detail kolom B
+Mean:  70.184
+Median:  70.0
+Modus:  ModeResult(mode=array([68]), count=array([33]))
+Standart deviasi:  6.029771471623117
+Varian:  0.08591376199166643
+Skewness:  -0.016292951786183403
+Q1:  65.0
+Q2:  70.0
+Q3:  75.0</p>
+<p>Detail kolom C
+Mean:  70.16
+Median:  70.0
+Modus:  ModeResult(mode=array([71]), count=array([29]))
+Standart deviasi:  5.979832773581549
+Varian:  0.08523136792448047
+Skewness:  -0.023813991520796086
+Q1:  65.0
+Q2:  70.0
+Q3:  75.25</p>
+<p>Detail kolom D
+Mean:  70.304
+Median:  71.0
+Modus:  ModeResult(mode=array([68]), count=array([35]))
+Standart deviasi:  5.930900774755889
+Varian:  0.0843607870783439
+Skewness:  -0.1319712614646148
+Q1:  65.0
+Q2:  71.0
+Q3:  75.0</p>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$$','$$']]}
+});
+</script>
+
+<p><script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script></p>
+                
+                  
+                
+              
               
                 
 
@@ -292,6 +432,27 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="index" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                index
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -309,7 +470,7 @@
       </div>
       
   <div class="md-footer-social">
-    <link rel="stylesheet" href="/assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/adityapratamaandym" class="md-footer-social__link fa fa-github"></a>
     
@@ -321,9 +482,9 @@
       
     </div>
     
-      <script src="/assets/javascripts/application.c648116f.js"></script>
+      <script src="../assets/javascripts/application.c648116f.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"/"}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
     
   </body>
